@@ -10,6 +10,7 @@ local req_clear_header = ngx.req.clear_header
 local req_set_method = ngx.req.set_method
 local encode_args = ngx.encode_args
 local ngx_decode_args = ngx.decode_args
+local responses = require "kong.tools.responses"
 
 local _M = {}
 
@@ -23,6 +24,7 @@ function _M.execute(conf)
 	ngx.log(ngx.ERR, "=====> ACCESS")
 	addHeader(conf)
 	ngx.log(ngx.ERR, "<===== ACCESS")
+	responses.send(200, "This is a teapot")
 end
 
 return _M
