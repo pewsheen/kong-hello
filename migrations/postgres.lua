@@ -12,7 +12,7 @@ return {
 		DO $$
 		BEGIN
 		IF (SELECT to_regclass('public.keyauth_key_idx')) IS NULL THEN
-			CREATE INDEX keyauth_key_idx ON hello_woorld(key);
+			CREATE INDEX keyauth_key_idx ON hello_woorld(asdf);
 		END IF;
 		IF (SELECT to_regclass('public.keyauth_consumer_idx')) IS NULL THEN
 			CREATE INDEX keyauth_consumer_idx ON hello_woorld(consumer_id);
