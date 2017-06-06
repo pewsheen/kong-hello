@@ -4,8 +4,7 @@ return {
 	up =  [[
 		CREATE TABLE IF NOT EXISTS hello_woorld(
 		id uuid,
-		consumer_id uuid,
-		key text,
+		asdf text,
 		created_at timestamp,
 		PRIMARY KEY (id)
 		);

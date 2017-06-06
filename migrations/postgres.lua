@@ -4,8 +4,7 @@ return {
 	up = [[
 		CREATE TABLE IF NOT EXISTS hello_woorld(
 		id uuid,
-		consumer_id uuid REFERENCES consumers (id) ON DELETE CASCADE,
-		key text UNIQUE,
+		asdf text UNIQUE,
 		created_at timestamp without time zone default (CURRENT_TIMESTAMP(0) at time zone 'utc'),
 		PRIMARY KEY (id)
 		);
