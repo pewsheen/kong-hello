@@ -12,19 +12,29 @@ local encode_args = ngx.encode_args
 local ngx_decode_args = ngx.decode_args
 local responses = require "kong.tools.responses"
 
+local singletons = require "kong.singletons"
+local dao_factory = singletons.dao
+
+local keys_dao = dao_factory.hello_woorld
+
 local _M = {}
 
 function addHeader(conf)
 	ngx.log(ngx.ERR, "=====> ADDHEADER")
 	req_set_header("X-hello-header", "world!")
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
+
+	local key_credential, err = keys_dao:insert({
+		asdf = "abcd"
+	})
+
+	responses.send(200, key_credential)
 end
 
 function _M.execute(conf)
 	ngx.log(ngx.ERR, "=====> ACCESS")
 	addHeader(conf)
 	ngx.log(ngx.ERR, "<===== ACCESS")
-	responses.send(200, "This is a teapot")
 end
 
 return _M
