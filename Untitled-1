@@ -1,0 +1,67 @@
+=== USER ===
+
+{
+  "username": "TWuser",
+  "created_at": 1496303390000,
+  "id": "a05be8f3-0cbc-4576-8df9-2c9115d455c2"
+}
+
+{
+  "username": "DEuser",
+  "created_at": 1496303405000,
+  "id": "e93b84a7-0fb5-4a49-a0fa-c6c104487e66"
+}
+
+=== API ===
+
+{
+  "data": [
+    {
+      "http_if_terminated": true,
+      "id": "02cdcab3-c42a-40a6-a26d-16946f3a9552",
+      "upstream_read_timeout": 60000,
+      "preserve_host": false,
+      "created_at": 1496302964000,
+      "upstream_connect_timeout": 60000,
+      "upstream_url": "http://httpbin.org/ip",
+      "strip_uri": true,
+      "https_only": false,
+      "name": "test1",
+      "retries": 5,
+      "upstream_send_timeout": 60000,
+      "hosts": [
+        "rem.synology.io"
+      ]
+    }
+  ],
+  "total": 1
+}
+
+{
+  "http_if_terminated": true,
+  "id": "f1f41421-f222-4d53-ab2e-f8bbd0bd9334",
+  "retries": 5,
+  "preserve_host": false,
+  "created_at": 1496303590000,
+  "upstream_connect_timeout": 60000,
+  "upstream_url": "http://httpbin.org/",
+  "upstream_read_timeout": 60000,
+  "https_only": false,
+  "upstream_send_timeout": 60000,
+  "strip_uri": true,
+  "name": "test2",
+  "hosts": [
+    "rem.synology.io"
+  ]
+}
+
+
+
+=== upstream ===
+
+{
+  "slots": 100,
+  "id": "69f7cfbc-0b86-4836-b42c-36072f461b55",
+  "name": "httpbin.v1",
+  "created_at": 1496384287085
+}
