@@ -14,7 +14,7 @@ return {
 		CREATE INDEX IF NOT EXISTS ON hello_woorld(kerker);
 	]],
 	down = [[
-		DROP TABLE hello_woorld;
+		DROP TABLE kong.hello_woorld;
 	]]
 }
 }

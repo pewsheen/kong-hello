@@ -20,6 +20,8 @@ local _M = {}
 function addHeader(conf)
 	ngx.log(ngx.ERR, "=====> ADDHEADER")
 
+	ngx.req.read_body()
+
 	local token, err = singletons.dao.hello_woorld:insert({
 		public_key = 'keygen123'
 	})
@@ -29,6 +31,7 @@ function addHeader(conf)
 	-- end
 
 	ngx.log(ngx.ERR, token)
+	ngx.log(ngx.ERR, err)
 
 	req_set_header("X-hello-header", "world!")
 
