@@ -14,6 +14,7 @@ local responses = require "kong.tools.responses"
 local public_utils = require "kong.tools.public"
 local utils = require "kong.tools.utils"
 local singletons = require "kong.singletons"
+local cache = require "kong.tools.database_cache"
 
 local _M = {}
 
