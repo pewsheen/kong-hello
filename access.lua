@@ -13,19 +13,12 @@ local ngx_decode_args = ngx.decode_args
 local responses = require "kong.tools.responses"
 
 local singletons = require "kong.singletons"
-local dao_factory = singletons.dao
-
-local keys_dao = dao_factory.hello_woorld
 
 local _M = {}
 
 function addHeader(conf)
 	ngx.log(ngx.ERR, "=====> ADDHEADER")
 	req_set_header("X-hello-header", "world!")
-
-	local key_credential, err = keys_dao:insert({
-		asdf = "abcd"
-	})
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 

@@ -4,7 +4,7 @@ return {
 	up = [[
 		CREATE TABLE IF NOT EXISTS hello_woorld(
 		id uuid,
-		asdf text UNIQUE,
+		key text UNIQUE,
 		created_at timestamp without time zone default (CURRENT_TIMESTAMP(0) at time zone 'utc'),
 		PRIMARY KEY (id)
 		);
@@ -12,10 +12,7 @@ return {
 		DO $$
 		BEGIN
 		IF (SELECT to_regclass('public.keyauth_key_idx')) IS NULL THEN
-			CREATE INDEX keyauth_key_idx ON hello_woorld(asdf);
-		END IF;
-		IF (SELECT to_regclass('public.keyauth_consumer_idx')) IS NULL THEN
-			CREATE INDEX keyauth_consumer_idx ON hello_woorld(consumer_id);
+			CREATE INDEX keyauth_key_idx ON hello_woorld(key);
 		END IF;
 		END$$;
 	]],

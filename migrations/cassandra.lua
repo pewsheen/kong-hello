@@ -4,13 +4,12 @@ return {
 	up =  [[
 		CREATE TABLE IF NOT EXISTS hello_woorld(
 		id uuid,
-		asdf text,
+		key text,
 		created_at timestamp,
 		PRIMARY KEY (id)
 		);
 
-		CREATE INDEX IF NOT EXISTS ON hello_woorld(asdf);
-		CREATE INDEX IF NOT EXISTS keyauth_consumer_id ON hello_woorld(consumer_id);
+		CREATE INDEX IF NOT EXISTS ON hello_woorld(key);
 	]],
 	down = [[
 		DROP TABLE hello_woorld;
