@@ -22,13 +22,14 @@ local _M = {}
 function addHeader(conf)
 	ngx.log(ngx.ERR, "=====> ADDHEADER")
 	req_set_header("X-hello-header", "world!")
-	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
 	local key_credential, err = keys_dao:insert({
 		asdf = "abcd"
 	})
 
-	responses.send(200, key_credential)
+	ngx.log(ngx.ERR, "<===== ADDHEADER")
+
+	responses.send(200, "YY")
 end
 
 function _M.execute(conf)
