@@ -26,16 +26,14 @@ function addHeader(conf)
 		public_key = 'keygen123'
 	})
 
-
-	-- ngx.log(ngx.ERR, token)
-	-- ngx.log(ngx.ERR, err)
-
 	for k, v in pairs(token) do
 		ngx.log(ngx.ERR, k)
 		ngx.log(ngx.ERR, v)
 	end
 
-	req_set_header("X-hello-header", "world!")
+	req_set_header("X-hello-kerker", token.kerker)
+	req_set_header("X-hello-public_key", token.public_key)
+	req_set_header("X-hello-id", token.id)
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
