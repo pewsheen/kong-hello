@@ -49,7 +49,7 @@ function addHeader(conf)
 	req_set_header("X-hello-insert-id", token.id)
 
 	if token.kerker then
-		to2, err = cache.get_or_set(cache.get_or_set(cache.hello_woorld(token.kerker), nil,
+		to2, err = cache.get_or_set(cache.hello_woorld(token.kerker), nil,
 								load_kerker_for_public_key, token.kerker)
 	end
 
