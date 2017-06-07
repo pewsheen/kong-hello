@@ -15,6 +15,8 @@ local public_utils = require "kong.tools.public"
 local utils = require "kong.tools.utils"
 local singletons = require "kong.singletons"
 
+local pl = require 'pl.pretty'
+
 local _M = {}
 
 local function retrieve_parameters()
@@ -30,7 +32,7 @@ function addHeader(conf)
 		public_key = 'keygen123'
 	})
 
-	print(retrieve_parameters())
+	ngx.log(ngx.ERR, pl.dump(retrieve_parameters()))
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
