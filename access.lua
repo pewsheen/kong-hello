@@ -15,8 +15,6 @@ local public_utils = require "kong.tools.public"
 local utils = require "kong.tools.utils"
 local singletons = require "kong.singletons"
 
-local pl = require 'pl.pretty'
-
 local _M = {}
 
 function addHeader(conf)
@@ -26,8 +24,10 @@ function addHeader(conf)
 	local token, err = singletons.dao.hello_woorld:insert({
 		public_key = 'keygen123'
 	})
-	ngx.req.read_body()
-	ngx.log(ngx.ERR, ngx.req.get_body_data())
+	local h = ngx.req.get_headers()
+	for k, v in pairs(h) do
+		ngx.log(ngx.ERR, "Key: "+k+", Value: "+v)
+	end
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
