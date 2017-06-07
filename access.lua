@@ -19,15 +19,18 @@ local _M = {}
 
 function addHeader(conf)
 	ngx.log(ngx.ERR, "=====> ADDHEADER")
-	req_set_header("X-hello-header", "world!")
 
 	local token, err = singletons.dao.hello_woorld:insert({
 		public_key = 'keygen123'
 	})
-	local h = ngx.req.get_headers()
-	for k, v in pairs(h) do
-		ngx.log(ngx.ERR, "Key: "+k+", Value: "+v)
-	end
+	-- local h = ngx.req.get_headers()
+	-- for k, v in pairs(h) do
+	-- 	ngx.log(ngx.ERR, "Key: "+k+", Value: "+v)
+	-- end
+
+	ngx.log(ngx.ERR, token)
+
+	req_set_header("X-hello-header", "world!")
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
