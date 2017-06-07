@@ -19,9 +19,6 @@ local _M = {}
 
 local function retrieve_parameters()
 	ngx.req.read_body()
-	ngx.log(ngx.ERR, ngx.req.get_uri_args())
-	ngx.log(ngx.ERR, public_utils.get_body_args())
-	ngx.log(ngx.ERR, utils.table_merge(ngx.req.get_uri_args(), public_utils.get_body_args()))
 	return utils.table_merge(ngx.req.get_uri_args(), public_utils.get_body_args())
 end
 
@@ -33,7 +30,7 @@ function addHeader(conf)
 		public_key = 'keygen123'
 	})
 
-	retrieve_parameters()
+	print(retrieve_parameters())
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
