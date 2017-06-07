@@ -11,10 +11,19 @@ local req_set_method = ngx.req.set_method
 local encode_args = ngx.encode_args
 local ngx_decode_args = ngx.decode_args
 local responses = require "kong.tools.responses"
+local public_utils = require "kong.tools.public"
 
 local singletons = require "kong.singletons"
 
 local _M = {}
+
+local function retrieve_parameters()
+	ngx.req.read_body()
+	ngx.log(ngx.ERR, ngx.req.get_uri_args())
+	ngx.log(ngx.ERR, public_utils.get_body_args())
+	ngx.log(ngx.ERR, utils.table_merge(ngx.req.get_uri_args(), public_utils.get_body_args()))
+	return utils.table_merge(ngx.req.get_uri_args(), public_utils.get_body_args())
+end
 
 function addHeader(conf)
 	ngx.log(ngx.ERR, "=====> ADDHEADER")
@@ -22,11 +31,13 @@ function addHeader(conf)
 
 	local token, err = singletons.dao.hello_woorld:insert({
 		public_key = 'keygen123'
-	}
+	})
+
+	retrieve_parameters()
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
-	responses.send(200, token)
+	-- responses.send(200, token)
 end
 
 function _M.execute(conf)
