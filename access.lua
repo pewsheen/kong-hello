@@ -19,11 +19,6 @@ local pl = require 'pl.pretty'
 
 local _M = {}
 
-local function retrieve_parameters()
-	ngx.req.read_body()
-	return utils.table_merge(ngx.req.get_uri_args(), ngx.req.get_body_data())
-end
-
 function addHeader(conf)
 	ngx.log(ngx.ERR, "=====> ADDHEADER")
 	req_set_header("X-hello-header", "world!")
@@ -32,7 +27,7 @@ function addHeader(conf)
 		public_key = 'keygen123'
 	})
 
-	ngx.log(ngx.ERR, pl.dump(retrieve_parameters()))
+	ngx.log(ngx.ERR, pl.dump(ngx.req.get_body_data())
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
