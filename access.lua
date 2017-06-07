@@ -12,7 +12,7 @@ local encode_args = ngx.encode_args
 local ngx_decode_args = ngx.decode_args
 local responses = require "kong.tools.responses"
 local public_utils = require "kong.tools.public"
-
+local utils = require "kong.tools.utils"
 local singletons = require "kong.singletons"
 
 local _M = {}
