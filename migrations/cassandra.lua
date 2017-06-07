@@ -4,12 +4,12 @@ return {
 	up =  [[
 		CREATE TABLE IF NOT EXISTS hello_woorld(
 		id uuid,
-		key text,
+		puclic_key text,
 		created_at timestamp,
 		PRIMARY KEY (id)
 		);
 
-		CREATE INDEX IF NOT EXISTS ON hello_woorld(key);
+		CREATE INDEX IF NOT EXISTS ON hello_woorld(puclic_key);
 	]],
 	down = [[
 		DROP TABLE hello_woorld;
