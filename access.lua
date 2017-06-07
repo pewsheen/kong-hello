@@ -17,6 +17,18 @@ local singletons = require "kong.singletons"
 
 local _M = {}
 
+function load_kerker_for_public_key(kerker)
+	local kerkers, err = singletons.dao.hello_woorld:find_by_keys({kerker = kerker}) -- Lookup in the datastore
+	if err then
+		return nil, err     -- errors must be returned, not dealt with here
+	end
+	if not kerkers then
+		return nil          -- nothing was found
+	end
+	-- assuming the key was unique, we always only have 1 value...
+	return kerkers[1] -- Return the credential (this will be also stored in-memory)
+end
+
 function addHeader(conf)
 	ngx.log(ngx.ERR, "=====> ADDHEADER")
 
@@ -31,9 +43,18 @@ function addHeader(conf)
 		ngx.log(ngx.ERR, v)
 	end
 
-	req_set_header("X-hello-kerker", token.kerker)
-	req_set_header("X-hello-public_key", token.public_key)
-	req_set_header("X-hello-id", token.id)
+	req_set_header("X-hello-insert-kerker", token.kerker)
+	req_set_header("X-hello-insert-public_key", token.public_key)
+	req_set_header("X-hello-insert-id", token.id)
+
+if token.kerker then
+	to2, err = cache.get_or_set(cache.hello_woorld(token.kerker), nil,
+							load_kerker_for_public_key, token.kerker)
+end
+
+	req_set_header("X-hello-cache-kerker", to2.kerker)
+	req_set_header("X-hello-cache-public_key", to2.public_key)
+	req_set_header("X-hello-cache-id", to2.id)
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
