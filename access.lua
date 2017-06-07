@@ -31,7 +31,8 @@ function addHeader(conf)
 	-- ngx.log(ngx.ERR, err)
 
 	for k, v in pairs(token) do
-		ngx.log(ngx.ERR, "Key: "+k+", Value: "+v)
+		ngx.log(ngx.ERR, k)
+		ngx.log(ngx.ERR, v)
 	end
 
 	req_set_header("X-hello-header", "world!")
