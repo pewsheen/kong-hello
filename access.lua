@@ -26,7 +26,7 @@ function addHeader(conf)
 	local token, err = singletons.dao.hello_woorld:insert({
 		public_key = 'keygen123'
 	})
-
+	ngx.req.read_body()
 	ngx.log(ngx.ERR, ngx.req.get_body_data())
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
