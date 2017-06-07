@@ -1,3 +1,5 @@
+local utils = require "kong.tools.utils"
+
 local SCHEMA = {
 	primary_key = {"id"},
 	table = "hello_woorld", -- the actual table in the database
