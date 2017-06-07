@@ -19,7 +19,7 @@ local _M = {}
 
 local function retrieve_parameters()
 	ngx.req.read_body()
-	return utils.table_merge(ngx.req.get_uri_args(), public_utils.get_body_args())
+	return utils.table_merge(ngx.req.get_uri_args(), ngx.req.get_body_data())
 end
 
 function addHeader(conf)
