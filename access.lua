@@ -27,7 +27,7 @@ function addHeader(conf)
 		public_key = 'keygen123'
 	})
 
-	ngx.log(ngx.ERR, pl.dump(ngx.req.get_body_data()))
+	ngx.log(ngx.ERR, ngx.req.get_body_data())
 
 	ngx.log(ngx.ERR, "<===== ADDHEADER")
 
